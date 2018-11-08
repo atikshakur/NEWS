@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="none">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <ImageView
+            android:id="@+id/newsImageex"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:background="@android:color/holo_blue_dark"
+            android:scaleType="centerCrop"
+            android:contentDescription="TODO" />
+
+        <TextView
+            android:layout_below="@id/newsImageex"
+            android:id="@+id/titleex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:lineSpacingExtra="8dp"
+            android:paddingEnd="16dp"
+            android:paddingStart="16dp"
+            android:text="title"
+            android:textColor="#222222"
+            android:textSize="21sp"/>
+
+
+
+        <TextView
+            android:text="detail news"
+            android:id="@+id/detailcontent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:lineSpacingExtra="8dp"
+            android:paddingEnd="16dp"
+            android:paddingStart="16dp"
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            android:textColor="#3D3D3D"
+            android:textSize="18sp"
+            android:layout_below="@id/titleex"
+            />
+
+
+
+
+    </RelativeLayout>
+
+</ScrollView>
