@@ -1,8 +1,6 @@
 package com.etherealmobile.rainy.activity;
 
 import android.app.ProgressDialog;
-import android.content.Context;
-import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -17,40 +15,30 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.etherealmobile.rainy.adapter.NewsAdapter;
 import com.etherealmobile.rainy.model.NewsModel;
-import com.etherealmobile.rainy.utils.AsyncNews;
 import com.etherealmobile.rainy.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-     private String API_KEY = "0ae4474c766f4adfa6e8e9febbbd5ad9";
-     private String url = "https://newsapi.org/v2/top-headlines?country=us&apiKey=";
-     private String google_news_url = "https://newsapi.org/v2/top-headlines?sources=google-news&apiKey=0ae4474c766f4adfa6e8e9febbbd5ad9";
-     NewsAdapter newsAdapter;
-     RecyclerView recyclerView;
+    private String API_KEY = "0ae4474c766f4adfa6e8e9febbbd5ad9";
+    private String url = "https://newsapi.org/v2/top-headlines?country=us&apiKey=";
+    private String google_news_url = "https://newsapi.org/v2/top-headlines?sources=google-news&apiKey=0ae4474c766f4adfa6e8e9febbbd5ad9";
+    NewsAdapter newsAdapter;
+    RecyclerView recyclerView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        new AsyncNews(this).execute(google_news_url);
-
         ArrayList<NewsModel> news = new ArrayList<>();
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        
         fetchData(news);
     }
 
@@ -76,9 +64,9 @@ public class MainActivity extends AppCompatActivity {
                                         jsonObject1.getString("content"));
                                 news.add(newsModel);
                             }
-                             newsAdapter = new NewsAdapter(news, MainActivity.this);
-                             recyclerView.setAdapter(newsAdapter);
-                             newsAdapter.notifyDataSetChanged();
+                            newsAdapter = new NewsAdapter(news, MainActivity.this);
+                            recyclerView.setAdapter(newsAdapter);
+                            newsAdapter.notifyDataSetChanged();
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -96,6 +84,5 @@ public class MainActivity extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
     }
-
 
 }
